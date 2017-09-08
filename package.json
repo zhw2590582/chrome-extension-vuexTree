@@ -1,12 +1,11 @@
 {
   "name": "chrome-extension-vueTree",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "description": "chrome-extension-vueTree",
   "scripts": {
     "build": "NODE_ENV=prod webpack",
     "dev": "NODE_ENV=dev webpack -w"
   },
-  "description": "chrome-extension-vueTree",
   "keywords": [
     "chrome",
     "extension",
