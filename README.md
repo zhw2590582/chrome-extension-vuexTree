@@ -2,6 +2,8 @@
 
 一个Chrome扩展，为 [Vuex](https://github.com/vuejs/vuex) 实现类似 [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) 的状态树展示效果
 
+## 使用
+
 ## 开发
 
 安装依赖
