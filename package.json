@@ -3,15 +3,10 @@
   "version": "1.0.0",
   "description": "chrome-extension-vueTree",
   "scripts": {
-    "build": "NODE_ENV=prod webpack",
-    "dev": "NODE_ENV=dev webpack -w"
+    "build": "webpack --config webpack.prod.conf.js",
+    "dev": "webpack -w --config webpack.dev.conf.js"
   },
-  "keywords": [
-    "chrome",
-    "extension",
-    "vue",
-    "vueTree"
-  ],
+  "keywords": ["chrome", "extension", "vue", "vueTree"],
   "homepage": "https://github.com/zhw2590582",
   "bugs": {
     "url": "https://github.com/zhw2590582",
