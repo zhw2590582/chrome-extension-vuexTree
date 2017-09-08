@@ -6,7 +6,7 @@
     "build": "webpack --config webpack.prod.conf.js",
     "dev": "webpack -w --config webpack.dev.conf.js"
   },
-  "keywords": ["chrome", "extension", "vue", "vueTree"],
+  "keywords": ["chrome", "extension", "vuexTree"],
   "homepage": "https://github.com/zhw2590582",
   "bugs": {
     "url": "https://github.com/zhw2590582/chrome-extension-vuexTree/issues",
