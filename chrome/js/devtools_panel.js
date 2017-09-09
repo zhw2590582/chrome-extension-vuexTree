@@ -1,1 +1,2 @@
-console.log('devtools_panel');
+import '../scss/devtools.scss';
+console.log('devtools');

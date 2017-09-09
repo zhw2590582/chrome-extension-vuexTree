@@ -1,3 +1,5 @@
+import '../scss/browser.scss';
+
 const curScriptElement = document.currentScript;
 const hook = require('../../package.json').hook;
 
