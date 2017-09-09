@@ -1,5 +1,6 @@
 {
-  "name": "chrome-extension-vuexTree",
+  "name": "VuexTree",
+  "hook": "__VUEXTREE_GLOBAL_HOOK__",
   "description": "一个Chrome扩展，为 Vuex 实现类似 redux-devtools-extension 的状态树展示效果",
   "version": "1.0.0",
   "scripts": {
