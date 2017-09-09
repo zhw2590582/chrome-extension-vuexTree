@@ -17,10 +17,7 @@ const config = {
   transitionDuration: 700
 };
 
-let render;
-setTimeout(() => {
-  render = tree(document.getElementById('app'), config);
-}, 0)
+let render = tree(document.getElementById('app'), config);
 
 setInterval(() => {
   render(backgroundPage.getState());
