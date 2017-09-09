@@ -16,13 +16,10 @@ script.addEventListener('hookEvent', function(e) {
         type: '@init'
       });
       break;
-    case 'update': // 更新
-      chrome.runtime.sendMessage({
-        type: 'update',
-        state: e.detail
-      });
-      break;
     default: // 默认
-      throw new TypeError('分发事件请指定 type 属性');
+      chrome.runtime.sendMessage({
+        type: '@update',
+        data: e.detail
+      });
   }
 });
