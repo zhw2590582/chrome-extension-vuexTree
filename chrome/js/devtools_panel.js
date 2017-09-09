@@ -4,18 +4,19 @@ import '../scss/devtools.scss';
 
 const bg = chrome.runtime.connect({ name: 'devtools' });
 const stateDuration = 1000;
-const render = tree(document.getElementById('app'), {
+const config = {
   state: {},
-  id: 'treeExample',
-  size: 1500,
+  id: 'vuexTree',
+  size: window.innerWidth - 20,
   aspectRatio: 0.5,
   isSorted: false,
   widthBetweenNodesCoeff: 1.5,
   heightBetweenNodesCoeff: 2,
-  style: { border: '1px solid black' },
   tooltipOptions: { offset: { left: 30, top: 10 }, indentationSize: 2 },
   transitionDuration: 700
-});
+}
+
+const render = tree(document.getElementById('app'), config);
 
 let stateOld = {};
 bg.onMessage.addListener(function(message, sender, sendResponse) {
@@ -25,5 +26,5 @@ bg.onMessage.addListener(function(message, sender, sendResponse) {
 });
 
 setInterval(() => {
-  bg.postMessage();
+  bg.postMessage({});
 }, stateDuration);
