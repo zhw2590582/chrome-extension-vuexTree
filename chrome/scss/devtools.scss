@@ -1,4 +1,17 @@
-body{
-  width: 1000px;
-  height: 500px;
+.tooltip{
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  line-height: 1.5;
+}
+
+#notFound{
+  font-size: 16px;
+  text-align: center;
+  margin: 20px auto 0;
+  a {
+    color: #0366d6
+  }
 }

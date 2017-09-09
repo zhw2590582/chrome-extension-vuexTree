@@ -3,6 +3,7 @@ import 'normalize.css';
 import '../scss/devtools.scss';
 
 const bg = chrome.runtime.connect({ name: 'devtools' });
+const notFound = document.getElementById('notFound');
 const stateDuration = 1000;
 const config = {
   state: {},
@@ -20,6 +21,7 @@ const render = tree(document.getElementById('app'), config);
 
 let stateOld = {};
 bg.onMessage.addListener(function(message, sender, sendResponse) {
+  console.log(message);
   if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
   stateOld = message;
   render(message);
