@@ -5,7 +5,9 @@ import '../scss/devtools.scss';
 
 // 注册端口
 const bg = chrome.runtime.connect({ name: 'devtools' });
-bg.postMessage({});
+bg.postMessage({
+  tabId: chrome.devtools.inspectedWindow.tabId
+});
 
 // 生成状态树
 const config = {
@@ -24,13 +26,10 @@ const render = tree(document.getElementById('app'), config);
 let stateOld = {};
 let notFound = document.getElementById('notFound');
 bg.onMessage.addListener(function(message, sender, sendResponse) {
-  if(message !== null){
-    notFound.style.display = 'none';
-  } else {
-    notFound.style.display = 'block';
-    return;
-  }
-  if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
-  stateOld = message;
-  render(message);
+  if(chrome.devtools.inspectedWindow.tabId !== message.tabId) return;
+  document.getElementById('test').innerText = JSON.stringify(message);
+  // if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
+  // removeElement(notFound);
+  // stateOld = message;
+  // render(message);
 });

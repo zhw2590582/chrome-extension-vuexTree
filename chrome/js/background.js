@@ -6,15 +6,15 @@ import './background/tabs';
 * ================================== 页面信息 ==================================
 */
 
-let state = null
+let state = null;
 
 /**
 * ================================== 长连接集合 ==================================
 */
 
 let ports = {};
-let postMessage = (name, data) => {
-  ports[name] && ports[name].postMessage(data)
+let postMessage = (name, state) => {
+  ports[name] && ports[name].postMessage(state);
 };
 
 chrome.runtime.onConnect.addListener(function(port) {
@@ -34,24 +34,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       console.log('前端初始化完成');
       break;
     case '@update': // 更新
+      console.log(sender);
+      request.data.state.tabId = sender.tab.id;
       state = request.data.state;
       postMessage('devtools', state);
       sendResponse(request);
       break;
     default: // 默认
   }
-});
-
-/**
-* ================================== 标签变化 ==================================
-*/
-
-// 切换标签
-chrome.tabs.onActivated.addListener(function(activeInfo) {
-  console.log(activeInfo);
-});
-
-// 关闭标签
-chrome.tabs.onRemoved.addListener(function(tabId) {
-  console.log(tabId);
 });
