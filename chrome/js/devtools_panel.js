@@ -1,14 +1,17 @@
 import { tree } from 'd3-state-visualizer';
+import { removeElement } from '../utils/dom';
 import 'normalize.css';
 import '../scss/devtools.scss';
 
+// 注册端口
 const bg = chrome.runtime.connect({ name: 'devtools' });
-const notFound = document.getElementById('notFound');
-const stateDuration = 1000;
+bg.postMessage({});
+
+// 生成状态树
 const config = {
   state: {},
   id: 'vuexTree',
-  size: window.innerWidth - 20,
+  size: window.innerWidth,
   aspectRatio: 0.5,
   isSorted: false,
   widthBetweenNodesCoeff: 1.5,
@@ -18,15 +21,16 @@ const config = {
 }
 
 const render = tree(document.getElementById('app'), config);
-
 let stateOld = {};
+let notFound = document.getElementById('notFound');
 bg.onMessage.addListener(function(message, sender, sendResponse) {
-  console.log(message);
+  if(message !== null){
+    notFound.style.display = 'none';
+  } else {
+    notFound.style.display = 'block';
+    return;
+  }
   if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
   stateOld = message;
   render(message);
 });
-
-setInterval(() => {
-  bg.postMessage({});
-}, stateDuration);

@@ -1,3 +1,6 @@
 import 'normalize.css';
 import '../scss/options.scss';
-console.log('options');
+
+// 注册端口
+const bg = chrome.runtime.connect({ name: 'options' });
+bg.postMessage({});

@@ -3,47 +3,55 @@ import './background/runtime';
 import './background/tabs';
 
 /**
-* ================================== Background 全局对象 ==================================
+* ================================== 页面信息 ==================================
 */
 
-window.backgroundPage = {
-  mutation: {},
-  state: {},
-  getMutation: () => backgroundPage.mutation,
-  getState: () => backgroundPage.state
-};
-
+let state = null
 
 /**
-* ================================== 消息订阅/分发中心 ==================================
+* ================================== 长连接集合 ==================================
 */
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  console.log(request, sender);
-  switch (request.type) {
-    case '@init': // 初始化
-      console.log('初始化');
-      break;
-    case '@update': // 更新
-      window.backgroundPage.mutation = request.data.mutation;
-      window.backgroundPage.state = request.data.state;
-      sendResponse(request);
-      break;
-    default: // 默认
-      throw new TypeError('分发事件请指定 type 属性');
+let ports = {};
+let postMessage = (name, data) => {
+  ports[name] && ports[name].postMessage(data)
+};
+
+chrome.runtime.onConnect.addListener(function(port) {
+  ports[port.name] = port;
+  if(port.name === 'devtools'){
+    postMessage('devtools', state);
   }
 });
 
-
 /**
-* ================================== 长连接 ==================================
+* ================================== 订阅分发 ==================================
 */
 
-chrome.runtime.onConnect.addListener(function(port) {
-  // devtools 面板
-  if(port.name === 'devtools'){
-    port.onMessage.addListener(function(message, sender, sendResponse) {
-      port.postMessage(backgroundPage.getState());
-    });
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  switch (request.type) {
+    case '@init': // 初始化
+      console.log('前端初始化完成');
+      break;
+    case '@update': // 更新
+      state = request.data.state;
+      postMessage('devtools', state);
+      sendResponse(request);
+      break;
+    default: // 默认
   }
+});
+
+/**
+* ================================== 标签变化 ==================================
+*/
+
+// 切换标签
+chrome.tabs.onActivated.addListener(function(activeInfo) {
+  console.log(activeInfo);
+});
+
+// 关闭标签
+chrome.tabs.onRemoved.addListener(function(tabId) {
+  console.log(tabId);
 });
