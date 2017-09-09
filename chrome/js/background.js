@@ -40,10 +40,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 */
 
 chrome.runtime.onConnect.addListener(function(port) {
+  // devtools 面板
   if(port.name === 'devtools'){
-    port.postMessage({answer: "Madame... Bovary"});
     port.onMessage.addListener(function(message, sender, sendResponse) {
-      console.log(message);
+      port.postMessage(backgroundPage.getState());
     });
   }
 });
