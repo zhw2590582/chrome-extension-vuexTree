@@ -3,7 +3,6 @@ const hook = require('../../package.json').hook;
 
 // 绑定事件
 window[hook] = function(state = {}) {
-  state.hook = hook;
   const hookEvent = new CustomEvent('hookEvent', {
     detail: state
   });

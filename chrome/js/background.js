@@ -3,7 +3,7 @@ import './background/runtime';
 import './background/tabs';
 
 /**
-* ================================== 消息订阅分发中心 ==================================
+* ================================== 消息订阅/分发中心 ==================================
 */
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
