@@ -40,3 +40,6 @@ $ npm run dev
 ```sh
 $ npm run build
 ```
+
+## 依赖
+[d3-state-visualizer](https://github.com/romseguy/d3-state-visualizer)
