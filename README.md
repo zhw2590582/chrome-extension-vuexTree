@@ -42,9 +42,14 @@ $ npm install
 $ npm run dev
 ```
 
-打包发布：生成 'vuexTree' 目录
+发布目录：生成 'vuexTree' 目录
 ```sh
 $ npm run build
+```
+
+发布crx：生成 'vuexTree.crx' 文件
+```sh
+$ npm run crx
 ```
 
 ## 依赖
