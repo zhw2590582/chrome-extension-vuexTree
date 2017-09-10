@@ -26,7 +26,7 @@ const render = tree(document.getElementById('app'), config);
 
 let stateOld = {};
 backgroundPageConnection.onMessage.addListener(function(message, sender, sendResponse) {
-  if(!message) return;
+  if(!message && JSON.stringify(stateOld) === '{}') return;
   if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
   removeElement(document.getElementById('notFound'));
   stateOld = message;

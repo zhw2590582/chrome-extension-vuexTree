@@ -26,6 +26,7 @@ chrome.runtime.onConnect.addListener(function(port) {
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   switch (message.type) {
     case '@init':
+      states[sender.tab.id] = null;
       ports.devtools[sender.tab.id].postMessage(null);
       sendResponse(null);
       break;
