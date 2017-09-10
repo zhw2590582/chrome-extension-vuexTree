@@ -6,7 +6,7 @@
 ## 预览
 来自 [vue2-elm](https://github.com/bailicangdu/vue2-elm)
 
-<img src='https://raw.githubusercontent.com/zhw2590582/chrome-extension-vuexTree/master/preview.gif' width='800px'>
+<img src='https://raw.githubusercontent.com/zhw2590582/chrome-extension-vuexTree/master/preview01.gif' width='800px'>
 
 
 ## 使用

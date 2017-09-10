@@ -1,9 +1,9 @@
-import './background/browserAction';
-import './background/runtime';
-import './background/tabs';
+/**
+* ================================== 总状态 ==================================
+*/
 
-let ports = {}
-let states = {}
+let ports = {};
+let states = {};
 
 /**
 * ================================== 长连接 ==================================
@@ -11,8 +11,8 @@ let states = {}
 
 chrome.runtime.onConnect.addListener(function(port) {
   !ports[port.name] && (ports[port.name] = {});
-  if(port.name === 'devtools'){
-    port.onMessage.addListener(function (message, sender, sendResponse) {
+  if (port.name === 'devtools') {
+    port.onMessage.addListener(function(message, sender, sendResponse) {
       ports[port.name][message.tabId] = port;
       port.postMessage(states[message.tabId]);
     });

@@ -9,7 +9,6 @@ head && head.appendChild(script);
 
 // 监听事件
 script.addEventListener('hookEvent', function(e) {
-  console.log(e);
   if(!e.detail.type) throw new TypeError('事件分发的参数对象不缺少 ‘type’ 属性');
   chrome.runtime.sendMessage(e.detail);
 });
