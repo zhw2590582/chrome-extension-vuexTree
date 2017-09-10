@@ -8,11 +8,11 @@
 import store from './store';
 
 store.subscribe((mutation, state) => {
-	window.__VUEXTREE_GLOBAL_HOOK__ && window.__VUEXTREE_GLOBAL_HOOK__({
-		type: '@update',
-		mutation,
-		state
-	});
+  window.__VUEXTREE_GLOBAL_HOOK__ && window.__VUEXTREE_GLOBAL_HOOK__({
+    type: '@update',
+    mutation,
+    state
+  });
 })
 
 ```
