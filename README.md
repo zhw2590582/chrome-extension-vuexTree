@@ -10,7 +10,13 @@
 
 
 ## 使用
-在Chrome => 选项 => 更多工具 => 在 "加载已解压的扩展程序" 中载入 "vuexTree" 目录，然后在 Vue 中,在 store 后面添加一个订阅消息即可
+在 “Chrome => 选项 => 更多工具” 中勾选 “开发者模式”。
+
+直接拖放 vuexTree.crx 到插件目录。
+
+或者在 "加载已解压的扩展程序" 中载入 "vuexTree" 目录。
+
+然后在 Vue 中,在 store 后面添加一个订阅消息即可。
 ```js
 import store from './store';
 
