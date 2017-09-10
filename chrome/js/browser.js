@@ -4,7 +4,7 @@ const curScriptElement = document.currentScript;
 const hook = require('../../package.json').hook;
 
 // 绑定事件
-window[hook] = function(data = {}) {
+window[hook] = function(data) {
   const hookEvent = new CustomEvent('hookEvent', {
     detail: data
   });

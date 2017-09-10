@@ -4,8 +4,8 @@ import 'normalize.css';
 import '../scss/devtools.scss';
 
 // 注册端口
-const bg = chrome.runtime.connect({ name: 'devtools' });
-bg.postMessage({
+const backgroundPageConnection = chrome.runtime.connect({ name: 'devtools' });
+backgroundPageConnection.postMessage({
   tabId: chrome.devtools.inspectedWindow.tabId
 });
 
@@ -23,13 +23,11 @@ const config = {
 }
 
 const render = tree(document.getElementById('app'), config);
+
 let stateOld = {};
-let notFound = document.getElementById('notFound');
-bg.onMessage.addListener(function(message, sender, sendResponse) {
-  if(chrome.devtools.inspectedWindow.tabId !== message.tabId) return;
-  document.getElementById('test').innerText = JSON.stringify(message);
-  // if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
-  // removeElement(notFound);
-  // stateOld = message;
-  // render(message);
+backgroundPageConnection.onMessage.addListener(function(message, sender, sendResponse) {
+  if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
+  removeElement(document.getElementById('notFound'));
+  stateOld = message;
+  render(message);
 });
