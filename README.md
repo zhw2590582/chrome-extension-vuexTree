@@ -2,6 +2,13 @@
 
 一个Chrome扩展，为 [Vuex](https://github.com/vuejs/vuex) 实现类似 [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) 的状态树展示效果
 
+
+## 预览
+来自 [vue2-elm](https://github.com/bailicangdu/vue2-elm)
+
+<img src='https://raw.githubusercontent.com/zhw2590582/chrome-extension-vuexTree/master/preview.gif' width='800px'>
+
+
 ## 使用
 在Chrome => 选项 => 更多工具 => 在 "加载已解压的扩展程序" 中载入 "build" 目录，然后在 Vue 中,在 store 后面添加一个订阅消息即可
 ```js
