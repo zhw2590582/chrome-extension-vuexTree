@@ -14,7 +14,7 @@ const config = {
   state: {},
   id: 'vuexTree',
   size: window.innerWidth,
-  aspectRatio: 0.5,
+  aspectRatio: 1,
   isSorted: false,
   widthBetweenNodesCoeff: 1.5,
   heightBetweenNodesCoeff: 2,
