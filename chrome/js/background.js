@@ -2,16 +2,19 @@ import './background/browserAction';
 import './background/runtime';
 import './background/tabs';
 
+let ports = {}
+let states = {}
+
 /**
-* ================================== 长连接集合 ==================================
+* ================================== 长连接 ==================================
 */
 
-let ports = {}
 chrome.runtime.onConnect.addListener(function(port) {
   !ports[port.name] && (ports[port.name] = {});
   if(port.name === 'devtools'){
     port.onMessage.addListener(function (message, sender, sendResponse) {
       ports[port.name][message.tabId] = port;
+      port.postMessage(states[message.tabId]);
     });
   }
 });
@@ -22,13 +25,15 @@ chrome.runtime.onConnect.addListener(function(port) {
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   switch (message.type) {
-    case '@init': // 初始化
-      console.log('前端初始化完成');
+    case '@init':
+      ports.devtools[sender.tab.id].postMessage(null);
+      sendResponse(null);
       break;
-    case '@update': // 更新
+    case '@update':
+      states[sender.tab.id] = message.state;
       ports.devtools[sender.tab.id].postMessage(message.state);
       sendResponse(message);
       break;
-    default: // 默认
+    default:
   }
 });
