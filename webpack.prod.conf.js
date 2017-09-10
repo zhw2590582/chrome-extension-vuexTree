@@ -15,7 +15,7 @@ module.exports = {
     window: path.join(__dirname, './chrome/js/window.js'),
   },
   output: {
-    path: path.join(__dirname, './build/js'),
+    path: path.join(__dirname, './vuexTree/js'),
     filename: '[name].js'
   },
   module: {
@@ -79,7 +79,7 @@ module.exports = {
       ['_locales', 'images', 'pages', 'manifest.json'].map(dir => {
         return {
           from: path.join(__dirname, './chrome/' + dir),
-          to: path.join(__dirname, './build/' + dir),
+          to: path.join(__dirname, './vuexTree/' + dir),
           ignore: ['.*']
         };
       })

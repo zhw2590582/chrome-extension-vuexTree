@@ -10,7 +10,7 @@
 
 
 ## 使用
-在Chrome => 选项 => 更多工具 => 在 "加载已解压的扩展程序" 中载入 "build" 目录，然后在 Vue 中,在 store 后面添加一个订阅消息即可
+在Chrome => 选项 => 更多工具 => 在 "加载已解压的扩展程序" 中载入 "vuexTree" 目录，然后在 Vue 中,在 store 后面添加一个订阅消息即可
 ```js
 import store from './store';
 
@@ -36,7 +36,7 @@ $ npm install
 $ npm run dev
 ```
 
-打包发布：生成 'build' 目录
+打包发布：生成 'vuexTree' 目录
 ```sh
 $ npm run build
 ```
