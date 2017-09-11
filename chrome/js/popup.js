@@ -1,4 +1,4 @@
-import { sendMessageToTab } from './api/tabs.js';
+import { sendMessageToTab } from './api/tabs';
 import 'normalize.css';
 import '../scss/popup.scss';
 

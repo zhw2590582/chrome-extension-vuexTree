@@ -27,3 +27,8 @@ port.onMessage.addListener(function(message, sender, sendResponse) {
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   if (!message.type) throw new TypeError('事件分发的参数对象不能缺少 ‘type’ 属性');
 });
+
+// 监听message事件
+window.addEventListener("message", function(event) {
+  if (event.source != window) return;
+}, false);
