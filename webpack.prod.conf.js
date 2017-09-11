@@ -1,6 +1,8 @@
+var name = require('./package.json').name;
 var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var copyDir = ['_locales', 'images', 'pages', 'manifest.json'];
 
 module.exports = {
   entry: {
@@ -12,10 +14,10 @@ module.exports = {
     options: path.join(__dirname, './chrome/js/options.js'),
     inject: path.join(__dirname, './chrome/js/inject.js'),
     popup: path.join(__dirname, './chrome/js/popup.js'),
-    window: path.join(__dirname, './chrome/js/window.js'),
+    window: path.join(__dirname, './chrome/js/window.js')
   },
   output: {
-    path: path.join(__dirname, './vuexTree/js'),
+    path: path.join(__dirname, './' + name + '/js'),
     filename: '[name].js'
   },
   module: {
@@ -76,10 +78,10 @@ module.exports = {
       }
     }),
     new CopyWebpackPlugin(
-      ['_locales', 'images', 'pages', 'manifest.json'].map(dir => {
+      copyDir.map(dir => {
         return {
           from: path.join(__dirname, './chrome/' + dir),
-          to: path.join(__dirname, './vuexTree/' + dir),
+          to: path.join(__dirname, './' + name + '/' + dir),
           ignore: ['.*']
         };
       })
