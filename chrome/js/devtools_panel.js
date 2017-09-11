@@ -13,8 +13,8 @@ backgroundPageConnection.postMessage({
 const config = {
   state: {},
   id: 'vuexTree',
-  size: window.innerWidth,
-  aspectRatio: 1,
+  size: window.innerWidth - 20,
+  aspectRatio: 0.5,
   isSorted: false,
   widthBetweenNodesCoeff: 1.5,
   heightBetweenNodesCoeff: 2,
