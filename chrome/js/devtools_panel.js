@@ -3,11 +3,9 @@ import { removeElement } from '../utils/dom';
 import 'normalize.css';
 import '../scss/devtools.scss';
 
-// 注册端口
-const backgroundPageConnection = chrome.runtime.connect({ name: 'devtools' });
-backgroundPageConnection.postMessage({
-  tabId: chrome.devtools.inspectedWindow.tabId
-});
+// 注册长连接端口
+const port = chrome.runtime.connect({ name: 'devtools' });
+port.postMessage({tabId: chrome.devtools.inspectedWindow.tabId});
 
 // 生成状态树
 const config = {
@@ -25,7 +23,7 @@ const config = {
 const render = tree(document.getElementById('app'), config);
 
 let stateOld = {};
-backgroundPageConnection.onMessage.addListener(function(message, sender, sendResponse) {
+port.onMessage.addListener(function(message, sender, sendResponse) {
   if(!message && JSON.stringify(stateOld) === '{}') return;
   if(JSON.stringify(message) === JSON.stringify(stateOld)) return;
   removeElement(document.getElementById('notFound'));
