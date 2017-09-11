@@ -7,6 +7,7 @@
   "default_locale": "en",
   "icons": {
     "16": "images/icon-16.png",
+    "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
   "background": {
@@ -39,9 +40,7 @@
     "all_frames": true
   }],
   "permissions": [
-    "contentSettings",
-    "management",
-    "storage",
+    "notifications",
     "tabs",
     "<all_urls>"
   ],
