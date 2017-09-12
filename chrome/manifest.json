@@ -40,7 +40,6 @@
     "all_frames": true
   }],
   "permissions": [
-    "notifications",
     "tabs",
     "<all_urls>"
   ],
