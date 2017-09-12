@@ -7,9 +7,11 @@
   "default_locale": "en",
   "icons": {
     "16": "images/icon-16.png",
+    "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
   "background": {
+    "persistent": false,
     "page": "pages/background.html"
   },
   "browser_action": {
@@ -18,7 +20,7 @@
       "48": "images/icon-48.png",
       "128": "images/icon-128.png"
     },
-    "default_title": "chrome-extension-vue",
+    "default_title": "VuexTree",
     "default_popup": "pages/popup.html"
   },
   "options_page": "pages/options.html",
@@ -38,9 +40,6 @@
     "all_frames": true
   }],
   "permissions": [
-    "contentSettings",
-    "management",
-    "storage",
     "tabs",
     "<all_urls>"
   ],

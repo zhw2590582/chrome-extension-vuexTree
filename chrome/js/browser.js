@@ -1,14 +1,14 @@
 import '../scss/browser.scss';
-
-const curScriptElement = document.currentScript;
-const hook = require('../../package.json').hook;
+import { hook } from '../../package.json';
 
 // 绑定事件
+const currentScript = document.currentScript;
 window[hook] = function(data) {
-  const hookEvent = new CustomEvent('hookEvent', {
-    detail: data
-  });
-  curScriptElement.dispatchEvent(hookEvent);
+  currentScript.dispatchEvent(
+    new CustomEvent(hook, {
+      detail: data
+    })
+  );
 };
 
 // 初始化
