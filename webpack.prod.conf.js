@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'prod';
 var name = require('./package.json').name;
 var path = require('path');
 var webpack = require('webpack');

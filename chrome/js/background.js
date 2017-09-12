@@ -1,14 +1,16 @@
+import '../utils/hotReload';
+
 /**
 * ================================== 扩展状态 ==================================
 */
 
-let ports = {
+// 因为webpack打包后无法正常使用chrome.extension.getBackgroundPage，所以暴露的变量须带上window
+window.ports = {
   devtools: {},
-  popup: {},
   content: {},
+  popup: {}
 };
-
-let states = {};
+window.states = {};
 
 /**
 * ================================== 长连接中心 ==================================

@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'dev';
 var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -13,7 +14,7 @@ module.exports = {
     options: path.join(__dirname, './chrome/js/options.js'),
     inject: path.join(__dirname, './chrome/js/inject.js'),
     popup: path.join(__dirname, './chrome/js/popup.js'),
-    window: path.join(__dirname, './chrome/js/window.js')
+    window: path.join(__dirname, './chrome/js/window.js'),
   },
   output: {
     path: path.join(__dirname, './dev/js'),

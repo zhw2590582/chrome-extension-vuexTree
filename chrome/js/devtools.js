@@ -1,2 +1,1 @@
-const name = require('../manifest.json').name;
-chrome.devtools.panels.create(name, '', '../pages/devtools_panel.html');
+chrome.devtools.panels.create(chrome.runtime.getManifest().name, '', '../pages/devtools_panel.html');
