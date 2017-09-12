@@ -5,8 +5,6 @@ import '../scss/popup.scss';
 // 获取background
 const bg = chrome.extension.getBackgroundPage();
 
-console.log(chrome.runtime.getURL('../app'));
-
 // 注册长连接端口
 const port = chrome.runtime.connect({ name: 'popup' });
 
